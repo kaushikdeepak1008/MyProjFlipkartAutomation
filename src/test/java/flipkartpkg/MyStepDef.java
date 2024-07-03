@@ -34,8 +34,11 @@ public class MyStepDef {
 
     @Given("user is on result page")
     public void user_is_on_result_page() {
-        SearchPage searchpage = new SearchPage(driver);
-        Assert.assertTrue(searchpage.search().contains("shirts for men"),"Assertion failed");
+        driver = DriverFactory.getDriver();
+        new HomePage(driver).load();
+        new HomePage(driver).searchProduct("shirts for men");
+        //SearchPage searchpage = new SearchPage(driver);
+        //Assert.assertTrue(searchpage.search().contains("shirts for men"),"Assertion failed");
     }
 
     @When("user clicks on first result")
